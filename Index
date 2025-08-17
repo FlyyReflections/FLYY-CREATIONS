@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flyy Reflections Digital Art Studio</title>
+  <!-- Google Fonts for Flyy style -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <!-- Navigation bar -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">Flyy Reflections</div>
+      <nav>
+        <a href="#kits">Kits</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero section with background image and call to action -->
+  <section id="hero">
+    <div class="hero-image" style="background-image: url('assets/img/hero.png');"></div>
+    <div class="hero-content">
+      <h1>Flyy Reflections</h1>
+      <p>Digital Art Studio &amp; Custom Paint Experiences</p>
+      <div class="cta-buttons">
+        <button onclick="scrollToSection('kits')">Order Your Kit</button>
+        <button onclick="scrollToSection('events')">Book an Event</button>
+      </div>
+    </div>
+  </section>
+  <!-- Kits section -->
+  <section id="kits">
+    <div class="container">
+      <h2>Digital Paint &amp; Sip Kits</h2>
+      <p>Bring the Flyy experience home. Each kit includes a custom stencil designed just for you, numbered paints, brushes, rhinestones, and your design printed on canvas. Choose your theme, we do the rest.</p>
+      <button onclick="toggleForm('kitForm')">Order Kit</button>
+      <form id="kitForm" class="hidden" onsubmit="submitKit(event)">
+        <h3>Order Your Kit</h3>
+        <label>
+          Your Name:
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email:
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Phone:
+          <input type="tel" name="phone" required>
+        </label>
+        <label>
+          Shipping Address:
+          <textarea name="address" required></textarea>
+        </label>
+        <label>
+          Theme / Artwork Description:
+          <textarea name="theme" placeholder="Describe your vision..."></textarea>
+        </label>
+        <label>
+          Extras:
+          <select name="extras">
+            <option value="none">None</option>
+            <option value="rhinestones">Rhinestones</option>
+            <option value="glow-in-the-dark">Glow-in-the-dark</option>
+            <option value="gold-leaf">Gold Leaf</option>
+          </select>
+        </label>
+        <label>
+          Preferred Date for Delivery:
+          <input type="date" name="date">
+        </label>
+        <button type="submit">Submit Order</button>
+      </form>
+    </div>
+  </section>
+  <!-- Events section -->
+  <section id="events">
+    <div class="container">
+      <h2>Custom Paint &amp; Sip Events</h2>
+      <p>Book a private paint-and-sip session led by Flyy Reflections. We provide everything: stencils, numbered paints, brushes, rhinestones, table décor, and a digital print for every guest. Perfect for birthdays, team-building, bridal showers, or family reunions.</p>
+      <p>Sessions are hosted twice per week. You'll choose your dates and themes; we create the artwork and deliver the kits on time. You'll walk away feeling like an artist — even if it's your first time.</p>
+      <button onclick="toggleForm('eventForm')">Request a Booking</button>
+      <form id="eventForm" class="hidden" onsubmit="submitEvent(event)">
+        <h3>Book Your Paint &amp; Sip</h3>
+        <label>
+          Your Name:
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email:
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Phone:
+          <input type="tel" name="phone" required>
+        </label>
+        <label>
+          Event Date:
+          <input type="date" name="eventDate" required>
+        </label>
+        <label>
+          Number of Guests:
+          <input type="number" name="guests" min="1" required>
+        </label>
+        <label>
+          Location (City/Online):
+          <input type="text" name="location" placeholder="City or Online Platform">
+        </label>
+        <label>
+          Theme / Artwork Description:
+          <textarea name="theme" placeholder="Describe your vision..."></textarea>
+        </label>
+        <label>
+          Additional Notes:
+          <textarea name="notes"></textarea>
+        </label>
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </section>
+  <!-- About section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Flyy Reflections</h2>
+      <p>Flyy Reflections is a luxury digital art studio and paint experience created by a Black/Mexican artist from Texas with roots in O‘ahu. Our mission is to transform grief into glam and memories into living artwork. Every design features our signature elements: cracked mirror truth, butterfly wing for you, angel wing for those we miss, chrome teardrops, and a soft baby-blue rim of hope.</p>
+      <p>We believe in celebrating life through art, aligning with 11:11, and creating experiences that feel like home. Our stencils are beginner-friendly but intricate, so even first‑time painters can create something jaw-dropping. Two sessions a week leave us time to craft custom designs for each class. Digital copies of your painting are included so your memory lives on everywhere.</p>
+    </div>
+  </section>
+  <!-- Contact section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact &amp; Connect</h2>
+      <p>For questions, custom requests, or collaborations, reach out via email or follow us on social media. We respond within 24 hours.</p>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:info@flyyreflections.com">info@flyyreflections.com</a></li>
+        <li>Instagram: <a href="https://instagram.com/flyyreflections" target="_blank">@flyyreflections</a></li>
+        <li>TikTok: <a href="https://tiktok.com/@flyyreflections" target="_blank">@flyyreflections</a></li>
+      </ul>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Forever Flyy — aligning at 11:11. &copy; 2025 Flyy Reflections</p>
+    </div>
+  </footer>
+  <!-- Main JavaScript -->
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
