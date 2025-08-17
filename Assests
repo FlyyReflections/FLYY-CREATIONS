@@ -1,0 +1,79 @@
+// Flyy Reflections JavaScript
+// This script handles smooth scrolling, form toggling, and sending data to your automation webhook.
+
+/**
+ * Scroll smoothly to a given section by id.
+ * @param {string} id - The id of the section to scroll to.
+ */
+function scrollToSection(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/**
+ * Toggle visibility of a form by adding/removing the "hidden" class.
+ * @param {string} formId - The id of the form to toggle.
+ */
+function toggleForm(formId) {
+  const form = document.getElementById(formId);
+  if (form) {
+    form.classList.toggle('hidden');
+  }
+}
+
+// Replace this placeholder URL with your own Zapier/Make webhook endpoint.
+// The endpoint should accept JSON in the format { type: 'kit_order' | 'event_request', payload: data }
+// Point the forms to your site’s API endpoint.  This URL must match your live domain.
+const WEBHOOK = 'https://flyyreflections.vercel.app/api/webhook';
+
+/**
+ * Submit a paint kit order. Prevents default form submission,
+ * serializes the form data into an object, and posts it to the webhook.
+ * On success, resets and hides the form.
+ * @param {Event} event
+ */
+function submitKit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const data = Object.fromEntries(new FormData(form));
+  fetch(WEBHOOK, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ type: 'kit_order', payload: data })
+  }).then(() => {
+    alert('Thank you! Your kit request has been sent. You will receive an email with the details soon.');
+    form.reset();
+    form.classList.add('hidden');
+  }).catch(err => {
+    console.error(err);
+    alert('An error occurred. Please try again.');
+  });
+}
+
+/**
+ * Submit an event booking request. Works similarly to submitKit.
+ * @param {Event} event
+ */
+function submitEvent(event) {
+  event.preventDefault();
+  const form = event.target;
+  const data = Object.fromEntries(new FormData(form));
+  fetch(WEBHOOK, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ type: 'event_request', payload: data })
+  }).then(() => {
+    alert('Thank you! Your event request has been submitted. We will contact you within 24 hours.');
+    form.reset();
+    form.classList.add('hidden');
+  }).catch(err => {
+    console.error(err);
+    alert('An error occurred. Please try again.');
+  });
+}
